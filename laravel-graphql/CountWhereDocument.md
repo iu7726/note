@@ -208,8 +208,9 @@ query
 }
  ```
 
+<hr>
  #### 참고 자료
- [https://laravel.kr/docs/6.x] Laravel Korea
- [https://lighthouse-php.com/master/getting-started/installation.html] Lighthouse
+[Laravel Korea](https://laravel.kr/docs/6.x)
+[Lighthouse](https://lighthouse-php.com/master/getting-started/installation.html)
 
 
