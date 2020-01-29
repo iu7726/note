@@ -5,10 +5,9 @@ component의 class명이 변수에 담긴 값이여야할 때 <br>
 *공식 문서를 잘 읽자...*
 
 ## 방법
-
-<br>
+ 
 ```html
-<btn cls="className" :class="`class_{argVal}`">
+	<btn cls="className" :class="`class_{argVal}`"></btn>
 ```
 <br>
 
