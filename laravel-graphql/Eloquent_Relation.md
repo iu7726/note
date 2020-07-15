@@ -35,9 +35,10 @@ Model에 설정된 relation이 있는 레코드만 가져옵니다.
 
 ```
 Model::whereHas(
-    '{relation}' => function($query){
+    '{relation}', function($query){
         $query->where('a','b');
     }
 )->select()
 ```
 Model에 설정된 relation 중 조건에 부합하는 relation의 레코드가 있을 경우 Model의 레코드를 반환합니다.
+> 주의) 배열이 아닙니다.
