@@ -151,8 +151,7 @@ public class Hello {
 
 ```
 
-> ctrl + shift + enter 닫히지 않은 괄호 및 세미콜론을 전부 입력해줍니다.(IntelliJ)
-<br>
+> ctrl + shift + enter 닫히지 않은 괄호 및 세미콜론을 전부 입력해줍니다.(IntelliJ)<br>
 import되지 않은 패키지가 있다면 alt + enter를 입력하시면 자동으로 패키지가 import됩니다.<br>
 
 <img src="../iamges/api_success2.png">
@@ -164,17 +163,15 @@ json형식으로 출력되는 모습을 확인할 수 있습니다.
 
 간단한 동작 플로우입니다.
 
-
-
-## 참고
-
-https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/lecture/49578?tab=curriculum
-
- 1. route된 controller를 따라갑니다.
- 2. @ResponseBody어노테이션이 붙은걸 확인한 Controller가 문자 또는 객체를 반환합니다.  
+1. route된 controller를 따라갑니다.
+2. @ResponseBody어노테이션이 붙은걸 확인한 Controller가 문자 또는 객체를 반환합니다.  
   2.1 문자 -> StringConverter / 객체 -> JsonConverter가 사용됩니다. 
 
 - @ResponseBody : '데이터 그대로 출력한다'라는 어노테이션입니다.
    - 템플릿 엔진을 사용하지않고 String이 그대로 전달되고 출력됩니다.
    - html태그도 출력이 되지않습니다.
    - Default return값은 Json입니다.
+
+## 참고
+
+https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/lecture/49578?tab=curriculum
