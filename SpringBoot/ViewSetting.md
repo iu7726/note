@@ -105,3 +105,6 @@ public class HelloController {
 `java -jar my-spring-0.0.1-SNAPSHOT.jar ` 
 
 jar파일을 실행시키면 Spring이 실행됩니다.
+
+## 참고
+https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/dashboard

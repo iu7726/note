@@ -112,7 +112,7 @@ $ ./gradlew build buildDocker
 $ docker images -a
 
 # 컨테이너 실행
-# docker run -p 로컬포트:8080(톰캣포트) --name 컨테이너명 -t 리파지토리명:태그
+# docker run -p 로컬포트:톰캣포트 --name 컨테이너명 -t 리파지토리명:태그
 $ docker run -p 80:8080 --name demo -t com.example.test/demo:0.0.1-SNAPSHOT
 
 # 컨테이너 연결 종료
