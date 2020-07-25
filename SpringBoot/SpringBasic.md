@@ -153,6 +153,7 @@ public class Hello {
 
 > ctrl + shift + enter 닫히지 않은 괄호 및 세미콜론을 전부 입력해줍니다.(IntelliJ)<br>
 import되지 않은 패키지가 있다면 alt + enter를 입력하시면 자동으로 패키지가 import됩니다.<br>
+alt + insert getter / setter 자동 생성
 
 <img src="../iamges/api_success2.png">
 
