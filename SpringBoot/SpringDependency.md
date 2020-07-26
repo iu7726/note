@@ -13,7 +13,7 @@
    - @Repository
  - 자동으로 등록시켜주는 범위는 main Class가 있는 패키지와 하위 패키지만 등록됩니다.
 
-이렇게 스프링이 등록한 빈은 `싱글톤(Singleton)`으로 등록합니다.
+이렇게 스프링이 등록한 빈은 `싱글톤(Singleton)`으로 관리됩니다.
 
 ```java
 package hello.myspring.controller;
@@ -43,7 +43,7 @@ public class MemberController {
 
 `'hello.myspring.service.MemberService' that could not be found.`라는 에러를 확인하실 수 있습니다.
 
-그 이유는 `MemberService`는 현재 순수한 자바 class파일입니다. Spring Container가 관리를 하고 있지 않는 상태라는 거죠. Spring Container의 관리를 받으려면 어노테이션을 추가해줘야됩니다.
+그 이유는 `MemberService`는 현재 순수한 자바 class파일입니다. Spring Container가 관리를 하고 있지 않는 상태라는 거죠. Spring Container의 관리를 받으려면 어노테이션을 추가해야 됩니다.
 
 ```java
 package hello.myspring.service;
