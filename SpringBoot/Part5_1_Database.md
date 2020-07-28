@@ -431,7 +431,250 @@ class MemberServiceIntegrationTest {
 
 ## 스프링 JdbcTemplate
 
-## JPA
+```java
+package hello.myspring.repository;
+
+import hello.myspring.domain.Member;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+
+import javax.sql.DataSource;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class JdbcTemplateMemberRepository implements MemberRepository {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    public JdbcTemplateMemberRepository(DataSource dataSource){
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    @Override
+    public Member save(Member member) {
+
+        SimpleJdbcInsert jdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        jdbcInsert.withTableName("member").usingGeneratedKeyColumns("id");
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("name", member.getName());
+
+        Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(parameters));
+        member.setId(key.longValue());
+
+        return member;
+    }
+
+    @Override
+    public Optional<Member> findById(Long id) {
+
+        List<Member> result = jdbcTemplate.query("SELECT * FROM MEMBER WHERE id = ?", memberRowMapper(), id);
+
+        return result.stream().findAny();
+    }
+
+    @Override
+    public Optional<Member> findByName(String name) {
+        List<Member> result = jdbcTemplate.query("SELECT * FROM MEMBER WHERE name = ?", memberRowMapper(), name);
+
+        return result.stream().findAny();
+    }
+
+    @Override
+    public List<Member> findAll() {
+        return jdbcTemplate.query("SELECT * FROM MEMBER", memberRowMapper());
+    }
+
+    private RowMapper<Member> memberRowMapper(){
+        return (rs, rowNum) -> {
+
+            Member member = new Member();
+            member.setId(rs.getLong("id"));
+            member.setName(rs.getString("name"));
+
+            return member;
+        };
+    }
+}
+```
+
+`SpringConfig`
+
+```java
+@Bean
+public MemberRepository memoryMemberRepository(){
+
+    return new JdbcTemplateMemberRepository(this.dataSource);
+
+}
+```
+
+> 환경 설정은 순수 Jdbc에서 했던 것과 동일합니다.
+
+JdbcTemplate과 MyBatis 같은 라이브러리는 JDBC API에서 본 반복 코드를 대부분 제거해줍니다만 sql은 직접 작성해야합니다.
+
+생성자가 한개인 경우 `@Autowired`를 생략 가능합니다.
+
+<img src="../iamges/Jdbc_template_test_success.png" />
+
+굳이 스프링을 띄어서 직접 테스트하지 않고 위에서 만들어 놓은 테스트 코드로 확인하였습니다.
+
+## JPA(자바 퍼시스턴스 API)
+
+ - 반복 코드, SQL도 JPA에서는 작성할 필요가 없습니다.
+ - SQL과 데이터 중심의 설계에서 객체 중심의 설계로 패러다임을 전환할 수 있습니다.
+ - 개발생산성이 크게 높아집니다.
+
+```gradle
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	runtimeOnly 'com.h2database:h2'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+```
+
+라이브러리 추가를 진행합니다.
+
+`application.properties`
+
+```properties
+spring.datasource.url=jdbc:h2:tcp://localhost/~/test
+spring.datasource.driver-class-name=org.h2.Driver
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=none
+```
+
+`spring.jpa.show-sql` 만들어진 sql 표시 여부 옵션입니다.
+
+`spring.jpa.hibernate.ddl-auto` 테이블 자동 생성 여부입니다. 현재 테이블이 작성되어 있고 만들어진 것을 사용하기 때문에 `none`으로 설정합니다.
+
+> ORM : Object Relation Mapping
+
+`JpaMemberRepository.java`
+
+```java
+package hello.myspring.repository;
+
+import hello.myspring.domain.Member;
+
+import javax.persistence.EntityManager;
+import java.util.List;
+import java.util.Optional;
+
+public class JpaMemberRepository implements MemberRepository {
+
+    private final EntityManager em;
+
+    public JpaMemberRepository(EntityManager em) {
+        this.em = em;
+    }
+
+    @Override
+    public Member save(Member member) {
+        em.persist(member);
+        return member;
+    }
+
+    @Override
+    public Optional<Member> findById(Long id) {
+        Member member = em.find(Member.class, id);
+        return Optional.ofNullable(member);
+    }
+
+    @Override
+    public Optional<Member> findByName(String name) {
+
+        return em.createQuery("SELECT m From Member AS m WHERE m.name = :name", Member.class)
+                .setParameter("name", name)
+                .getResultList()
+                .stream()
+                .findAny();
+
+    }
+
+    @Override
+    public List<Member> findAll() {
+        //객체를 기반으로 테이블을 조회합니다.
+        return em.createQuery("SELECT m FROM Member AS m", Member.class).getResultList();
+    }
+}
+```
+
+`MemberService.java`
+
+```java
+package hello.myspring.service;
+
+~
+import org.springframework.transaction.annotation.Transactional;
+~
+
+@Transactional
+public class MemberService {
+    ~
+}
+```
+
+Jpa가 동작하기 위해서는 Transctional상태여야 합니다.
+
+`SpringConfig`
+
+```java
+@Configuration
+public class SpringConfig {
+
+    private EntityManager em;
+
+    @Autowired
+    public SpringConfig(EntityManager em){
+        this.em = em;
+    }
+
+    @Bean
+    public MemberService memberService(){
+        return new MemberService(memoryMemberRepository());
+    }
+
+    @Bean
+    public MemberRepository memoryMemberRepository(){
+        return new JpaMemberRepository(this.em);
+    }
+}
+```
+
+`Member.java`
+
+```java
+package hello.myspring.domain;
+
+import javax.persistence.*;
+
+@Entity
+public class Member {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)//DB가 자동으로 생성
+    private Long id;
+    private String name;
+
+    ~
+}
+```
+
+객체를 기반으로 테이블을 조회합니다.
+
+<img src="../iamges/jpa_test_success.png" />
+
+테스트는 테스트 코드로 진행합니다.
 
 ## 스프링 데이터 JPA
 
