@@ -678,6 +678,68 @@ public class Member {
 
 ## 스프링 데이터 JPA
 
+ - CURD도 JPA가 제공합니다.
+ - 핵심 비즈니스 로직을 개발하는데 집중할 수 있습니다.
+ - 환경설정은 JPA와 동일합니다.
+
+```java
+package hello.myspring.repository;
+
+import hello.myspring.domain.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface SpringDataJpaMemberRepository extends JpaRepository<Member,Long>, MemberRepository {
+
+    @Override
+    Optional<Member> findByName(String name);
+}
+```
+
+기본적인 CURD 및 ID를 이용한 조회, 페이지네이션 등 공통으로 사용할 수 있는 부분은 `JpaRepository`에 내장되어있습니다.
+
+`findByName` : find By Name으로 구분하며 'name컬럼을 기준으로 조회를 하겠다' 라는 의미입니다.
+
+그 외 `findByEmail`, `findByPhone`등이 있습니다.
+
+```java
+package hello.myspring;
+
+import hello.myspring.repository.JdbcMemberRepository;
+import hello.myspring.repository.JdbcTemplateMemberRepository;
+import hello.myspring.repository.JpaMemberRepository;
+import hello.myspring.repository.MemberRepository;
+import hello.myspring.service.MemberService;
+import net.bytebuddy.asm.Advice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.persistence.EntityManager;
+import javax.sql.DataSource;
+
+@Configuration
+public class SpringConfig {
+
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
+
+    @Bean
+    public MemberService memberService(){
+        return new MemberService(memberRepository);
+    }
+
+}
+```
+
+<img src="../iamges/spring_data_jpa.png" />
+
+Jpa, 스프링 데이터 Jpa를 기본으로 사용하며 복잡한 동적쿼리는 Querydsl이라는 라이브러리를 이용하여 프로젝트를 진행합니다.
 
 ## 참고
 
@@ -686,3 +748,7 @@ https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%
 https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/lecture/49594?tab=curriculum
 
 https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/lecture/49595?tab=curriculum
+
+https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/lecture/49597?tab=curriculum
+
+https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8/lecture/49598?tab=curriculum
