@@ -8,7 +8,7 @@
 
 https://start.spring.io 로 접속하여 프로젝트 생성합니다.
 
-<img src="../iamges/start_spring_io.png">
+<img src="../../iamges/start_spring_io.png">
 
 ### Project
 많이 사용하는 Gradle Project를 선택합니다.
@@ -32,7 +32,7 @@ Java를 사용하기 때문에 Java를 선택합니다.
 
 Generate 버튼 클릭하면 zip파일을 다운로드 받고 압축을 풀어주세요.
 
-<img src="../iamges/openOrImport.png">
+<img src="../../iamges/openOrImport.png">
 
 Open Or Import를 클릭 후 압축 해제한 폴더에서 <b>build.gradle</b> 파일을 클릭하면 팝업이 하나 나오는데 <b>Open as Project</b>를 클릭합니다.
 
@@ -40,7 +40,7 @@ Open Or Import를 클릭 후 압축 해제한 폴더에서 <b>build.gradle</b> �
 > 네트워크 연결이 되어있어야됩니다.
 
 ### 파일 구조
-<img src="../iamges/demo_directory.png">
+<img src="../../iamges/demo_directory.png">
 
  - gradle : gradle 관련 폴더입니다.   
  - test : 테스트 코드를 작성하는 공간입니다.
@@ -50,16 +50,16 @@ Open Or Import를 클릭 후 압축 해제한 폴더에서 <b>build.gradle</b> �
 
 
 ## 실행
-<img src="../iamges/application_start.png"/>
+<img src="../../iamges/application_start.png"/>
 
 실행 결과
 
-<img src="../iamges/first_start.png" />
+<img src="../../iamges/first_start.png" />
 
 ### 실행이 제대로 안될 떄
 가끔 Java를 실행하는게 아니라 gradle을 통해 실행할 때가 있는데 그럴때는 `ctrl+alt+s`를 눌러 setting 팝업을 띄워줍니다.
 
-<img src="../iamges/intellij_start.png">
+<img src="../../iamges/intellij_start.png">
 
 `gradle`검색 후 `Build and Run using / Run tests using`을 `IntelliJ IDEA`로 변경해주세요.
 

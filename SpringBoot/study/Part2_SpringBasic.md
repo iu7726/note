@@ -24,11 +24,11 @@
 </html>
 ```
 
-<img src="../iamges/static_file.png">
+<img src="../../iamges/static_file.png">
 
 파일의 내용을 그대로 표시합니다.
 
-<img src="../iamges/static_flow.png">
+<img src="../../iamges/static_flow.png">
 
 간단하게 표시한 구조입니다.
 
@@ -62,7 +62,7 @@ View
 </html>
 ```
 
-<img src="../iamges/mvc_fail.png">
+<img src="../../iamges/mvc_fail.png">
 
 `localhost:8080/hello-mvc`로 접속하면 나오는 화면입니다.
 
@@ -72,7 +72,7 @@ View
 
 필수 파라미터인 name이 없어서 에러가 발생했다는 뜻입니다.
 
-<img src="../iamges/mvc_success.png">
+<img src="../../iamges/mvc_success.png">
 
 다시 Get방식으로 데이터를 넘겨주니 정상적으로 페이지가 출력됩니다.
 
@@ -87,11 +87,11 @@ public String helloMvc(@RequestParam(value = "name", required = false) String na
 만약 해당 파라미터를 필수로 넘기고 싶지 않다면 위 코드와 같이 required를 false로 설정해주시면 됩니다. 
 > required의 default값은 true입니다.
 
-<img src="../iamges/mvc_success2.png">
+<img src="../../iamges/mvc_success2.png">
 
 파라미터를 넘기지 않았으나 정상적으로 페이지가 출력되는 것을 확인하실 수 있습니다.
 
-<img src="../iamges/mvc_flow.png">
+<img src="../../iamges/mvc_flow.png">
 
 MVC의 간단한 동작 플로우입니다.
 
@@ -112,7 +112,7 @@ public String helloString(@RequestParam("name") String name){
 }
  ```
 
-<img src="../iamges/api_success.png">
+<img src="../../iamges/api_success.png">
 
 return한 값 그대로 출력되는 모습을 확인할 수 있습니다.
 
@@ -155,12 +155,12 @@ public class Hello {
 import되지 않은 패키지가 있다면 alt + enter를 입력하시면 자동으로 패키지가 import됩니다.<br>
 alt + insert getter / setter 자동 생성
 
-<img src="../iamges/api_success2.png">
+<img src="../../iamges/api_success2.png">
 
 json형식으로 출력되는 모습을 확인할 수 있습니다.
 
 
-<img src="../iamges/api_flow.png">
+<img src="../../iamges/api_flow.png">
 
 간단한 동작 플로우입니다.
 

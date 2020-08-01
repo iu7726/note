@@ -39,7 +39,7 @@ public class MemberController {
  
 만약 저와 같은 예제로 작성한 상태로 실행시키면 오류가 출력됩니다.
 
-<img src="../iamges/autowired_error.png">
+<img src="../../iamges/autowired_error.png">
 
 `'hello.myspring.service.MemberService' that could not be found.`라는 에러를 확인하실 수 있습니다.
 
@@ -68,7 +68,7 @@ public class MemoryMemberRepository implements MemberRepository{
 
 Repository도 등록을 시켜줘야 의존성 주입이 가능합니다.
 
-<img src="../iamges/spring_container_rescue.png">
+<img src="../../iamges/spring_container_rescue.png">
 
 어노테이션으로 등록된 현재 Spring Container의 구조입니다.
 

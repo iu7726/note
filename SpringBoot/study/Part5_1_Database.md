@@ -16,13 +16,13 @@ http://www.h2database.com/html/main.html
 
 `H2 Console`을 실행시켜주세요.
 
-<img src="../iamges/H2 Setting.png">
+<img src="../../iamges/H2 Setting.png">
 
 교육용이니 별다른 설정은 하지않고 진행하겠습니다.
 
 <b>연결</b>버튼을 클릭합니다.
 
-<img src="../iamges/H2_console_main.png">
+<img src="../../iamges/H2_console_main.png">
 
 접속 성공한 화면입니다.
 
@@ -58,7 +58,7 @@ INSERT INTO MEMBER(name) VALUES ('spring2');
 
 초기 데이터를 세팅합니다.
 
-<img src="../iamges/H2_insert_result.png">
+<img src="../../iamges/H2_insert_result.png">
 
 결화 화면입니다.
 
@@ -111,7 +111,7 @@ Java는 DB에 접속할 때 Jdbc 라이브러리가 필수입니다.
 
 `com.h2database:h2` : 데이터베이스에 접속할 클라이언트입니다.
 
-<img src="../iamges/gradle_import.png" />
+<img src="../../iamges/gradle_import.png" />
 
 import 버튼을 클릭해 해당 패키지를 import해주세요.
 
@@ -336,7 +336,7 @@ public class SpringConfig {
 }
 ```
 
-<img src="../iamges/plain_jdbc_ret.png"/>
+<img src="../../iamges/plain_jdbc_ret.png"/>
 
 DB CR이 정상적으로 실행되는 모습을 확인하실수 있습니다.
 
@@ -344,9 +344,9 @@ DB CR이 정상적으로 실행되는 모습을 확인하실수 있습니다.
 
 이런 다형성 때문에 Spring을 사용하는 이유도 있습니다.
 
-<img src="../iamges/DB_class_flow.png" />
+<img src="../../iamges/DB_class_flow.png" />
 
-<img src="../iamges/DB_spring_flow.png" />
+<img src="../../iamges/DB_spring_flow.png" />
 
  - 개방 폐쇄 원칙(OCP, Open_Closed Principle)
    - 확장에는 열려있고 수정에는 닫혀있습니다.
@@ -427,7 +427,7 @@ class MemberServiceIntegrationTest {
 
 > 모든 테스트는 단위 테스트로도 실행이 가능하도록 설계하는 것이 좋습니다.
 
-<img src="../iamges/spring_total_test.png" />
+<img src="../../iamges/spring_total_test.png" />
 
 ## 스프링 JdbcTemplate
 
@@ -522,7 +522,7 @@ JdbcTemplate과 MyBatis 같은 라이브러리는 JDBC API에서 본 반복 코�
 
 생성자가 한개인 경우 `@Autowired`를 생략 가능합니다.
 
-<img src="../iamges/Jdbc_template_test_success.png" />
+<img src="../../iamges/Jdbc_template_test_success.png" />
 
 굳이 스프링을 띄어서 직접 테스트하지 않고 위에서 만들어 놓은 테스트 코드로 확인하였습니다.
 
@@ -672,7 +672,7 @@ public class Member {
 
 객체를 기반으로 테이블을 조회합니다.
 
-<img src="../iamges/jpa_test_success.png" />
+<img src="../../iamges/jpa_test_success.png" />
 
 테스트는 테스트 코드로 진행합니다.
 
@@ -737,7 +737,7 @@ public class SpringConfig {
 }
 ```
 
-<img src="../iamges/spring_data_jpa.png" />
+<img src="../../iamges/spring_data_jpa.png" />
 
 Jpa, 스프링 데이터 Jpa를 기본으로 사용하며 복잡한 동적쿼리는 Querydsl이라는 라이브러리를 이용하여 프로젝트를 진행합니다.
 

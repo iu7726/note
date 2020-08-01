@@ -49,7 +49,7 @@ View
 
 `localhost:8080`
 
-<img src="../iamges/mvc_home.png">
+<img src="../../iamges/mvc_home.png">
 
 > static/index.html을 먼저 출력하지 않는 이유는 스프링 컨테이너는 컨트롤러의 맵핑된 라우트를 먼저 실행합니다.
 
@@ -92,7 +92,7 @@ View
 </html>
 ```
 
-<img src="../iamges/mvc_members_new.png" />
+<img src="../../iamges/mvc_members_new.png" />
 
 
 ### Post
@@ -171,7 +171,7 @@ View
 </html>
 ```
 
-<img src="../iamges/mvc_members_list.png">
+<img src="../../iamges/mvc_members_list.png">
 
 ## 참고
 

@@ -20,7 +20,7 @@ Hello
 
 작성 후 실행화면
 
-<img src="../iamges/hello_html.png">
+<img src="../../iamges/hello_html.png">
 
 Spring에 내장되어 있는 라이브러리가 동작하여 Html로 연결시켰습니다. 
 
@@ -86,7 +86,7 @@ public class HelloController {
 
 ### 동작 구조
 
-<img src="../iamges/spring_view.png" />
+<img src="../../iamges/spring_view.png" />
 
  - Controller에서 return 값으로 문자를 반환 시 `viewResolver`가 템플릿을 찾아서 호출합니다.
    - Spring Boot 템플릿엔진은 기본으로 viewName과 매핑됩니다.

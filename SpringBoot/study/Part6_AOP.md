@@ -6,7 +6,7 @@
  - 공통 관심 사항(croos-cutting concern) vs 핵심 관심 사항(core concern)
  - 회원 가입 시간, 회원 조회 시간을 측정하고 싶다면?
 
- <img src="../iamges/aop_spring_container.png" />
+ <img src="../../iamges/aop_spring_container.png" />
 
  MemberService 회원 조회 시간 측정
 
@@ -37,7 +37,7 @@
  - AOP : Aspect Oriented Programming
  - 공통 관심 사항(croos-cutting concern), 핵심 관심 사항(core concern) 분리
 
- <img src="../iamges/aop_spring_container_apply.png" />
+ <img src="../../iamges/aop_spring_container_apply.png" />
 
  원하는 메소드에 직접 로직을 수정하는 것이 아닌 적용을 하는 방식입니다.
 
@@ -90,13 +90,13 @@ End = execution(List hello.myspring.service.MemberService.findMembers()) 129
 End = execution(String hello.myspring.controller.MemberController.list(Model)) 146
  ```
 
-<img src="../iamges/aop_spring_dependency.png" />
+<img src="../../iamges/aop_spring_dependency.png" />
 
 컨테이너가 올라갈 때 가짜 스프링 빈이 올라오며 이를 `프록시`라고합니다.
 
 가짜 스프링 빈의 로직이 끝나면 진짜 스프링 빈의 로직이 실행됩니다.
 
-<img src="../iamges/aop_spring_dependency_all.png" />
+<img src="../../iamges/aop_spring_dependency_all.png" />
 
 ## 참고
 

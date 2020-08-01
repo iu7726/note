@@ -12,14 +12,14 @@
  - 기능 : 회원 등록, 조회
  - DB는 아직 활용안합니다.
 
-<img src="../iamges/web_application_flow.png">
+<img src="../../iamges/web_application_flow.png">
 
   - 컨트롤러 : 웹 MVC 역할
   - 서비스: 핵심 비즈니스 로직 구현
   - 리포지토리 : DB 접근
   - 도메인 : 비즈니스 도메인 객체
 
-<img src="../iamges/class_dependency.png">
+<img src="../../iamges/class_dependency.png">
 
  - 아직 DB가 없기 때문에 MemberRepository을 메모리 구현체로 구현합니다.
  - 나중에 RBD, JPA로 변경하기 때문에 Interface로 설정합니다.
@@ -215,11 +215,11 @@ Optional의 데이터를 꺼내기위해서는 get()을 호출해야됩니다.
 
 > shift + f6 rename하면 아래의 동일변수명을 동시에 치환합니다.
 
-<img src="../iamges/test_success.png" />
+<img src="../../iamges/test_success.png" />
 
 테스트 성공
 
-<img src="../iamges/test_fail.png" />
+<img src="../../iamges/test_fail.png" />
 
 테스트 실패
 
