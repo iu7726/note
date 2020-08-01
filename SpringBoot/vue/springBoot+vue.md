@@ -14,7 +14,20 @@ https://start.spring.io/ 에서 필요한 설정을 진행하여 초기 프로�
 
 프로젝트의 src폴더로 이동 후 `vue create frontend`를 입력합니다.
 
-저는 default로 생성했습니다.
+프로젝트 설정
+
+ - `Manually select` 을 선택합니다.
+ - `Babel, Router, Vuex, Css pre-processors, Linter / Formatter`을 선택합니다.
+ - `history mode`는 `Y`로 설정합니다.
+ - `Sass/SCSS`
+ - `ESLint + Prettier`
+ - `Lint on save`
+ - `In dedicated config files`
+ - `Save this as a preset for future projects?` N
+
+설치가 진행되었다면 추가적으로 axios를 설치합니다.
+
+`npm install axios --save`
 
 <img src="../../iamges/vue-create.png" />
 
@@ -77,46 +90,30 @@ public class HelloController {
 
 ```js
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import request from "request"
+// @ is an alias to /src
+import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
 
 export default {
-  name: 'App',
+  name: "Home",
   components: {
     HelloWorld
   },
   mounted() {
-    request('http://localhost:8080/api/hello' ,function (error, response, body) {
-      console.log("error", error);
-      console.log("response",response);
-      console.log("body",body);
-    })
+    axios.get("/api/hello").then(res => console.log(res));
   }
-}
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
 ```
 
 `App.vue`에 아까 만들어둔 컨트롤러에 요청을 합니다.
-
-> localhost:8080입니다.
 
 터미널창에서 `src/frontend`로 이동하여 `npm run serve`을 입력하여 vue서버를 실행합니다.
 
@@ -254,3 +251,5 @@ task buildFrontEnd(type: NpmTask, dependsOn: setUp){
 ## 참고
 
 https://deockstory.tistory.com/26
+
+https://cli.vuejs.org/guide/creating-a-project.html#vue-create
