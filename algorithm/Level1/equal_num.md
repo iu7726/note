@@ -58,3 +58,5 @@ function solution(arr)
     });
 }
 ```
+
+filter를 이용하여 조건에 맞는 값만 반환
