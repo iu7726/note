@@ -248,6 +248,8 @@ task buildFrontEnd(type: NpmTask, dependsOn: setUp){
 
 터미널창에 `./gradlew build` 실행 후 `build/libs/`의 jar파일 실행을 실행해서 확인하면 됩니다.
 
+[적용프로젝트](https://github.com/iu7726/todoList)
+
 ## 참고
 
 https://deockstory.tistory.com/26
