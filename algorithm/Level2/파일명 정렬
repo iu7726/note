@@ -1,0 +1,34 @@
+# 파일명 정렬
+
+## 문제
+
+[문제링크](https://programmers.co.kr/learn/courses/30/lessons/17686)
+
+## 제출한 풀이
+
+```javascript
+function solution(files) {
+    return files.map(i => {
+        let num = i.match(/\d+/g);
+        let numIdx = i.toLowerCase().indexOf(num[0]);
+        return {
+            name:i,
+            numIdx,
+            head:i.toLowerCase().substring(0,numIdx),
+            number:num[0]*1
+        }
+    })
+    .sort(
+        (a,b) => 
+            a.head > b.head ? 1 
+            : a.head < b.head ? -1
+            : a.number > b.number ? 1
+            : a.number < b.number ? -1
+            : a.index > b.index ? 1
+            : a.index < b.index ? -1
+            : 0
+    ).map(i => i.name);
+}
+```
+
+tail부분은 신경쓸필요가 없었고 예제에 나와있는 `foo010bar020.zip`와 같은 중복된 숫자와 다른 인덱스에서 숫자가 한번 더 나올때를 검사해주어야합니다.
